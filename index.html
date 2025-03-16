@@ -22,7 +22,19 @@
         </header>
 
         <section class="home" id="home">
+            <div class = "ramenDisplay">
+                <img id = "defaultImage" src="images/instant-2.jpg" alt="Ramen Image">
+                <div class = "ramenDetails">
+                    <h2 id = "ramenName"></h2>
+                    <p id = "ramenDescription"></p>
+                    <p><strong>Restaurant: </strong> <span id = "ramenRestaurant"></span></p>
+                    <p><strong>Rating: </strong> <span id = "ramenRating"></span></p>
+                    <p><strong>Comment: </strong> <span id = "ramenComment"></span></p>
+                </div>
+            </div>
 
+            <div class = "carouselContainer" id = "ramenMenu">
+            </div>
         </section>
 
         <section class="rater" id="rater">
@@ -34,19 +46,23 @@
                     <input type="text" placeholder="Dish Name" id="dishName">
                 </div>
                 <div class="input-box">
-                    <label for="dishName">Description:</label>
-                    <textarea type="text" name="description" placeholder="Description" id="dishDescription" cols="30" rows="10"></textarea>
+                    <label for="dishDescription">Description:</label>
+                    <textarea type="text" placeholder="Description" id="dishDescription" cols="30" rows="10"></textarea>
                 </div>
                 <div class="input-box">
-                    <label for="dishName">Image URL:</label>
+                    <label for="dishRestaurant">Restaurant:</label>
+                    <input type="text" placeholder="Restaurant" id="dishRestaurant">
+                </div>
+                <div class="input-box">
+                    <label for="dishImage">Image URL:</label>
                     <input type="text" placeholder="Image URL" id="dishImage">
                 </div>
                 <div class="input-box">
-                    <label for="dishName">Rating:</label>
+                    <label for="dishRating">Rating:</label>
                     <input type="number" placeholder="Rating" id="dishRating">
                 </div>
                 <div class="input-box">
-                    <label for="dishName">Comment:</label>
+                    <label for="dishComment">Comment:</label>
                     <textarea type="text" name="comment" placeholder="Comment" id="dishComment" cols="30" rows="10"></textarea>
                 </div>
 
