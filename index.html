@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Ramen Rater || Phase 1</title>
+
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+<!-- Laksa Ramen - Malaysian/Singaporean Coconut Broth.
+ Tonkotsu Ramen - Slow-cooked pork broth , tare sauce, aroma oil,
+ Naruto - Developed from popular anime show's fictional dish Ichiraku Ramen characterised by rice cake with pink swirl,
+ Nirvana - Mostly made of a mushrrom-based broth. It is charcterised by the fact that most of it's adaptations are vegan.
+ Shio - A salt-based broth
+ Shoyu - Soy-sauce based broth
+ Gyukotsu - Beef bone broth ramen.
+ Kojiro - A way heavier version of tonkotsu with udon-style noodles rather than the signature thin ramen noodles.-->
+    <body>
+        <header class = "header">
+            <a href="#home" class="logo">Ramen Rater</a>
+        </header>
+
+        <section class="home" id="home">
+
+        </section>
+
+        <section class="rater" id="rater">
+            <form action = "#">
+                <h2 class="form-heading">Add New Ramen Dish</h2>
+
+                <div class="input-box">
+                    <label for="dishName">Dish Name:</label>
+                    <input type="text" placeholder="Dish Name" id="dishName">
+                </div>
+                <div class="input-box">
+                    <label for="dishName">Description:</label>
+                    <textarea type="text" name="description" placeholder="Description" id="dishDescription" cols="30" rows="10"></textarea>
+                </div>
+                <div class="input-box">
+                    <label for="dishName">Image URL:</label>
+                    <input type="text" placeholder="Image URL" id="dishImage">
+                </div>
+                <div class="input-box">
+                    <label for="dishName">Rating:</label>
+                    <input type="number" placeholder="Rating" id="dishRating">
+                </div>
+                <div class="input-box">
+                    <label for="dishName">Comment:</label>
+                    <textarea type="text" name="comment" placeholder="Comment" id="dishComment" cols="30" rows="10"></textarea>
+                </div>
+
+                <div>
+                    <input type="submit" value="Submit" class="btn">
+                </div>
+            </form>
+        </section>
+
+
+
+        <script src="./index.js"></script>
+    </body>
+</html>
