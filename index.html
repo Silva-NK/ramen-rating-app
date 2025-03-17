@@ -22,9 +22,9 @@
         </header>
 
         <section class="home" id="home">
-            <div class = "ramenDisplay">
-                <img id = "defaultImage" src="images/instant-2.jpg" alt="Ramen Image">
-                <div class = "ramenDetails">
+            <div class = "ramenDisplay"> 
+                <img id = "defaultImage" src="" alt="Ramen Image">
+                <div class = "ramenDetails" id = "ramenDetails"> <!-- I chose to change the instructed #ramen-detail to ramenDetails coz I more comfortable with camelCase. -->
                     <h2 id = "ramenName"></h2>
                     <p id = "ramenDescription"></p>
                     <p><strong>Restaurant: </strong> <span id = "ramenRestaurant"></span></p>
@@ -33,7 +33,11 @@
                 </div>
             </div>
 
-            <div class = "carouselContainer" id = "ramenMenu">
+            <div class = "carouselWrapper">
+                <button id = "prevBtn">˂</button>
+                <div class = "carouselContainer" id = "ramenMenu"></div> <!-- I chose to change the instructed #ramen-menu to ramenMenu coz I more comfortable with camelCase. -->
+                <button id = "nextBtn">˃</button>
+            </div>
             </div>
         </section>
 
