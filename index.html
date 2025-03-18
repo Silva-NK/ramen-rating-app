@@ -10,7 +10,7 @@
     </head>
 <!-- Laksa Ramen - Malaysian/Singaporean Coconut Broth.
  Tonkotsu Ramen - Slow-cooked pork broth , tare sauce, aroma oil,
- Naruto - Developed from popular anime show's fictional dish Ichiraku Ramen characterised by rice cake with pink swirl,
+ Naruto - Developed from popular anime show's fictional dish Ichiraku Ramen characterised by rice cake with pink swirl garnish.
  Nirvana - Mostly made of a mushrrom-based broth. It is charcterised by the fact that most of it's adaptations are vegan.
  Shio - A salt-based broth
  Shoyu - Soy-sauce based broth
@@ -42,7 +42,7 @@
         </section>
 
         <section class="rater" id="rater">
-            <form action = "#">
+            <form action = "#" id="newRamen">
                 <h2 class="form-heading">Add New Ramen Dish</h2>
 
                 <div class="input-box">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="input-box">
                     <label for="dishRating">Rating:</label>
-                    <input type="number" placeholder="Rating" id="dishRating">
+                    <input type="number" placeholder="Rating" id="dishRating" min="0" max="10">
                 </div>
                 <div class="input-box">
                     <label for="dishComment">Comment:</label>
@@ -71,9 +71,10 @@
                 </div>
 
                 <div>
-                    <input type="submit" value="Submit" class="btn">
+                    <input type="submit" value="Add Dish" class="btn">
                 </div>
             </form>
+
         </section>
 
 

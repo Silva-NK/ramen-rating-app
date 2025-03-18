@@ -21,91 +21,6 @@ const ramens = [ {
         image: "images/miso.png",
         rating: 9.5,
         comment: "So flavourful and so rich!"
-    },
-
-    {
-        id: 3,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-    {
-        id: 4,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-
-    {
-        id: 5,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-
-    {
-        id: 6,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-
-    {
-        id: 7,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-
-    {
-        id: 8,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-    {
-        id: 9,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
-    },
-
-
-    {
-        id: 10,
-        name: "Miso Ramen",
-        description: "Thick curly ramen noodles in a rich, savoury miso-based broth (soybean paste) with a topping of grilled chicken, soy-marinated eggs green chillies and wheel of lime.",
-        restaurant: "Menya",
-        image: "images/miso.png",
-        rating: 9.5,
-        comment: "So flavourful and so rich!"
     }
  ];
 
@@ -119,7 +34,7 @@ function main() {
     displayRamens();
     setupCarousel();
     addSubmitListener();
-}
+}//Kumbuka kuensure rating isipite ten na maybe ichukuwe decimals.
 
 function displayRamens() {
     
@@ -139,12 +54,14 @@ function displayRamens() {
 }
 
 function handleClick(ramen) {
+
     document.getElementById("defaultImage").src = ramen.image;
     document.getElementById("ramenName").textContent = ramen.name;
     document.getElementById("ramenDescription").textContent = ramen.description;
     document.getElementById("ramenRestaurant").textContent = ramen.restaurant;
     document.getElementById("ramenRating").textContent = `${ramen.rating}/10`;
     document.getElementById("ramenComment").textContent = ramen.comment;
+   
 }
 
 function setupCarousel() {
@@ -162,6 +79,39 @@ function setupCarousel() {
 }
 
 function addSubmitListener() {
-    const form = document.querySelector("form");
+    const form = document.getElementById("newRamen");
 
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("dishName").value;
+        const description = document.getElementById("dishDescription").value;
+        const restaurant = document.getElementById("dishRestaurant").value;
+        const imageInput = document.getElementById("dishImage").value.trim();
+            const image = imageInput.startsWith("http") ? imageInput : `images/${imageInput}` || "images/default.jpg";
+        const rating = Math.min(10, parseFloat(document.getElementById("dishRating").value));
+        const comment = document.getElementById("dishComment").value;
+
+        const newRamen = {
+            id: ramens.length + 1,
+            name,
+            description,
+            restaurant,
+            image,
+            rating,
+            comment
+        };
+
+        ramens.push(newRamen);
+        
+        const img = document.createElement("img");
+        img.src = image;
+        img.alt = name;
+
+        img.addEventListener("click", () => handleClick(newRamen));
+
+        document.getElementById("ramenMenu").appendChild(img);
+
+        form.reset();
+    });
 }
