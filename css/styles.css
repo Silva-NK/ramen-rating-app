@@ -171,7 +171,28 @@ textarea {
     resize: vertical;
 }
 
-.btn{
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.full-width {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+
+.half-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.half-buttons .btn {
+    width: 50%;
+}
+
+.btn {
     display: inline-block;
     padding: 1rem 2.8rem;
     background: var(--text-color);
@@ -182,8 +203,10 @@ textarea {
     letter-spacing: 0.1rem;
     font-weight: 600;
     transition: 0.3s ease;
+    text-align: center;
 }
 
-.btn:hover{
-    box-shadow: 0 0 1.6rem var(--text-color);
+.btn:hover {
+    box-shadow: 0 0 0.5rem rgba(3, 3, 3, 0.8);
+    transform: scale(1.02);
 }

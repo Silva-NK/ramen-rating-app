@@ -53,7 +53,10 @@ function displayRamens() {
  
 }
 
+let currentRamen = null;
+
 function handleClick(ramen) {
+    currentRamen = ramen;
 
     document.getElementById("defaultImage").src = ramen.image;
     document.getElementById("ramenName").textContent = ramen.name;
@@ -61,8 +64,61 @@ function handleClick(ramen) {
     document.getElementById("ramenRestaurant").textContent = ramen.restaurant;
     document.getElementById("ramenRating").textContent = `${ramen.rating}/10`;
     document.getElementById("ramenComment").textContent = ramen.comment;
+
+    // Auto-fill form
+    document.getElementById("dishName").value = ramen.name;
+    document.getElementById("dishDescription").value = ramen.description;
+    document.getElementById("dishRestaurant").value = ramen.restaurant;
+    document.getElementById("dishImage").value = ramen.image;
+    document.getElementById("dishRating").value = ramen.rating;
+    document.getElementById("dishComment").value = ramen.comment;
    
+    document.getElementById("updateDish").disabled = false;
+    document.getElementById("deleteDish").disabled = false;
+    document.getElementById("addDish").disabled = true;
 }
+
+document.getElementById("clearForm").addEventListener("click", function () {
+    document.getElementById("ramenForm").reset();
+    
+    document.getElementById("updateDish").disabled = true;
+    document.getElementById("deleteDish").disabled = true;
+    document.getElementById("addDish").disabled = false;
+});
+
+document.getElementById("updateDish").addEventListener("click", function () {
+    if (!currentRamen) return;
+
+    if (confirm("Are you sure you want to update this item?")) {
+        currentRamen.rating = document.getElementById("dishRating").value;
+        currentRamen.comment = document.getElementById("dishComment").value;
+
+        document.getElementById("ramenRating").textContent = `${currentRamen.rating}/10`;
+        document.getElementById("ramenComment").textContent = currentRamen.comment;
+    }
+});
+
+document.getElementById("deleteDish").addEventListener("click", function () {
+    if (!currentRamen) return;
+
+    if (confirm("Are you sure you want to delete this item?")) {
+        document.getElementById("defaultImage").src = "images/default.jpg";
+        document.getElementById("ramenName").textContent = "N/A";
+        document.getElementById("ramenDescription").textContent = "N/A";
+        document.getElementById("ramenRestaurant").textContent = "N/A";
+        document.getElementById("ramenRating").textContent = "N/A";
+        document.getElementById("ramenComment").textContent = "N/A";
+
+        // Remove ramen from the list (you may need an actual array reference here)
+        currentRamen = null;
+
+        // Clear form
+        document.getElementById("ramenForm").reset();
+        document.getElementById("updateDish").disabled = true;
+        document.getElementById("deleteDish").disabled = true;
+        document.getElementById("addDish").disabled = false;
+    }
+});
 
 function setupCarousel() {
     const ramenMenu = document.getElementById("ramenMenu");
@@ -79,7 +135,7 @@ function setupCarousel() {
 }
 
 function addSubmitListener() {
-    const form = document.getElementById("newRamen");
+    const form = document.getElementById("ramenForm");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
