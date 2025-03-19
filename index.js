@@ -10,7 +10,7 @@ const ramens = [ {
     description: "A quick affordable meal featuring packaged noodles with a simple broth, chewy noodles and seasoning packet. Can be prepared quickly in the comfort of your own home.",
     restaurant: "N/A. Commercially sold. Prepared at home.", 
     image: "images/instant-2.jpg", 
-    rating: 5, 
+    rating: 7, 
     comment: "Easy and delicious." },
 
     {
@@ -26,7 +26,6 @@ const ramens = [ {
 
 function main() {
 
-    //Default Ramen display details
     if (ramens.length > 0) {
         handleClick(ramens[0]);
     }
@@ -38,7 +37,6 @@ function main() {
 
 function displayRamens() {
     
-    //New additions display
     const ramenMenu = document.getElementById("ramenMenu");
     ramenMenu.innerHTML = "";
 
@@ -65,7 +63,6 @@ function handleClick(ramen) {
     document.getElementById("ramenRating").textContent = `${ramen.rating}/10`;
     document.getElementById("ramenComment").textContent = ramen.comment;
 
-    // Auto-fill form
     document.getElementById("dishName").value = ramen.name;
     document.getElementById("dishDescription").value = ramen.description;
     document.getElementById("dishRestaurant").value = ramen.restaurant;
@@ -104,7 +101,7 @@ document.getElementById("deleteDish").addEventListener("click", function () {
     if (confirm("Are you sure you want to delete this dish?")) {
         
         const index = ramens.findIndex(ramen => ramen.id === currentRamen.id);
-        if (index !== -1) {
+        if (index === -1) {
             ramens.splice(index, 1);
         }
 
