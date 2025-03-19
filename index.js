@@ -89,7 +89,7 @@ document.getElementById("clearForm").addEventListener("click", function () {
 document.getElementById("updateDish").addEventListener("click", function () {
     if (!currentRamen) return;
 
-    if (confirm("Are you sure you want to update this item?")) {
+    if (confirm("Are you sure you want to update this dish?")) {
         currentRamen.rating = document.getElementById("dishRating").value;
         currentRamen.comment = document.getElementById("dishComment").value;
 
@@ -101,24 +101,44 @@ document.getElementById("updateDish").addEventListener("click", function () {
 document.getElementById("deleteDish").addEventListener("click", function () {
     if (!currentRamen) return;
 
-    if (confirm("Are you sure you want to delete this item?")) {
-        document.getElementById("defaultImage").src = "images/default.jpg";
-        document.getElementById("ramenName").textContent = "N/A";
-        document.getElementById("ramenDescription").textContent = "N/A";
-        document.getElementById("ramenRestaurant").textContent = "N/A";
-        document.getElementById("ramenRating").textContent = "N/A";
-        document.getElementById("ramenComment").textContent = "N/A";
+    if (confirm("Are you sure you want to delete this dish?")) {
+        
+        const index = ramens.findIndex(ramen => ramen.id === currentRamen.id);
+        if (index !== -1) {
+            ramens.splice(index, 1);
+        }
 
-        // Remove ramen from the list (you may need an actual array reference here)
-        currentRamen = null;
+        const ramenMenu = document.getElementById("ramenMenu");
+        const imgToRemove = ramenMenu.querySelector(`img[data-id="${currentRamen.id}"]`);
+        
+        if (imgToRemove) {
+            imgToRemove.style.opacity = "0";
+            setTimeout(() => {
+                ramenMenu.removeChild(imgToRemove);
+            }, 500);
+        }
 
-        // Clear form
-        document.getElementById("ramenForm").reset();
-        document.getElementById("updateDish").disabled = true;
-        document.getElementById("deleteDish").disabled = true;
-        document.getElementById("addDish").disabled = false;
+        setTimeout(() => {
+            if (ramens.length > 0) {
+                handleClick(ramens[0]);
+            } else {
+                document.getElementById("defaultImage").src = "images/default.jpg";
+                document.getElementById("ramenName").textContent = "N/A";
+                document.getElementById("ramenDescription").textContent = "N/A";
+                document.getElementById("ramenRestaurant").textContent = "N/A";
+                document.getElementById("ramenRating").textContent = "N/A";
+                document.getElementById("ramenComment").textContent = "N/A";
+                currentRamen = null;
+            }
+
+            document.getElementById("ramenForm").reset();
+            document.getElementById("updateDish").disabled = true;
+            document.getElementById("deleteDish").disabled = true;
+            document.getElementById("addDish").disabled = false;
+        }, 500);
     }
 });
+
 
 function setupCarousel() {
     const ramenMenu = document.getElementById("ramenMenu");
